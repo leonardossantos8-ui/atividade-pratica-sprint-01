@@ -81,3 +81,13 @@ falhar
 }, 1000);
 });
 }
+
+app.get("/mensagens-async", async (req, res) => {
+try {
+res.json(await consultar());
+} catch (erro) {
+res.status(500).json({
+erro: "Falha na consulta"
+});
+}
+});
